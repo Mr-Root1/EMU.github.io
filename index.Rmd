@@ -4,16 +4,8 @@ runningheader: "Tufte Handout with R Markdown" # only for pdf output
 subtitle: "An implementation in R Markdown" # only for html output
 author: "JJ Allaire and Yihui Xie"
 date: "`r Sys.Date()`"
-navbar:
-  title: "My Website"
-  left:
-    - text: "Home"
-      href: index.html
-    - text: "About"
-      href: about.html
 output:
   tufte::tufte_html: default
-  tufte::tufte_handout:
     citation_package: natbib
     latex_engine: xelatex
   tufte::tufte_book:
