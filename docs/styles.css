@@ -1,3 +1,10 @@
 blockquote {
   font-style: italic
 }
+/* Importar la fuente EB Garamond */
+@import url('https://fonts.googleapis.com/css?family=EB+Garamond&display=swap');
+
+/* Aplicar la fuente al cuerpo del documento */
+body {
+  font-family: 'EB Garamond', serif;
+}
