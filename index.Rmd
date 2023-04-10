@@ -1,8 +1,4 @@
 ---
-title: "My Website"
----
-
----
 title: "A Tufte Handout Example"
 runningheader: "Tufte Handout with R Markdown" # only for pdf output
 subtitle: "An implementation in R Markdown" # only for html output
@@ -19,6 +15,7 @@ output:
 bibliography: skeleton.bib
 link-citations: yes
 ---
+
 
 ```{r setup, include=FALSE}
 library(tufte)
