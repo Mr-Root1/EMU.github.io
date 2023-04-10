@@ -1,9 +1,83 @@
 ---
-output:
-  html_document:
+title: "INFORME FINAL ESTADÍSTICA MULTIVARIADA"
+subtitle: "Análisis exploratorio encuenta IEFIC-2017 -2018"
+author: "Diego Israel Sanabria Higuera"
+output: 
+  html_document: 
     css: styles.css
 ---
 
-# INFORME FINAL ESTADÍSTICA MULTIVARIADA
-##  Análisis exploratorio de los datos, encuenta *IEFIC-2017 -2018*
-### Diego Israel Sanabria Higuera
+
+```{r setup, include=FALSE, message= FALSE, warning=FALSE, echo=FALSE, error=FALSE}
+knitr::opts_chunk$set(warning = FALSE, message = FALSE)
+info.date<-format(Sys.time(), "%Y-%m")
+fileConn<-file("footer.html")
+msj<-paste("<p>", info.date, "ESTADISTICA DESCRIPTIVA</p>")
+writeLines(c(msj,"<p> UPTC.</p>"),fileConn)
+close(fileConn)
+```
+
+<script>
+$(document).ready(function() {
+  // Ocultar todas las secciones excepto la primera al cargar la página
+  $(".tabcontent").hide();
+  $("#introduccion").show();
+  
+  // Manejar el clic en los botones
+  $(".tablink").click(function() {
+    // Ocultar todas las secciones
+    $(".tabcontent").hide();
+    // Mostrar la sección correspondiente
+    var tabId = $(this).attr("data-id");
+    $("#" + tabId).show();
+  });
+});
+</script>
+
+
+## _ANÁLISIS EXPLORATORIO UNIVARIADO_
+Texto Texto
+
+
+<div class="tab">
+  <button class="tablink first-tab" data-id="introduccion">INTRODUCCIÓN</button>
+  <button class="tablink" data-id="seccion1">INGRESO</button>
+  <button class="tablink" data-id="seccion2">Sección 2</button>
+</div>
+
+
+
+<div id="introduccion" class="tabcontent">
+#### SET DE DATOS
+Encuesta de Carga Financiera y Educación Financiera de los Hogares - IEFIC-2017 -2018
+
+```{r}
+library(data.table)
+df_Ct <- fread("Outputs/df_Ct.csv")
+str(df_Ct)
+```
+
+```{r}
+library(DT)
+library(data.table)
+DT::datatable(df_Ct)
+```
+
+</div>
+
+
+<div id="seccion1" class="tabcontent">
+#### INGRESO TOTAL POR PERSONA
+Encuesta de Carga Financiera y Educación Financiera de los Hogares - IEFIC-2017 -2018
+```{r}
+tf_ingreso <- readRDS("Outputs/tf_ingreso.rds")
+str(tf_ingreso)
+```
+
+```{r}
+library(DT)
+library(data.table)
+DT::datatable(tf_ingreso)
+```
+
+</div>
