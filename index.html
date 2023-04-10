@@ -8,6 +8,7 @@
 <meta name="generator" content="pandoc" />
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 
 <meta name="author" content="JJ Allaire and Yihui Xie" />
 
@@ -16,23 +17,11 @@
 <title>A Tufte Handout Example</title>
 
 <script src="site_libs/header-attrs/header-attrs.js"></script>
-<script src="site_libs/jquery/jquery-3.6.0.min.js"></script>
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<link href="site_libs/bootstrap/css/cosmo.min.css" rel="stylesheet" />
-<script src="site_libs/bootstrap/js/bootstrap.min.js"></script>
-<script src="site_libs/bootstrap/shim/html5shiv.min.js"></script>
-<script src="site_libs/bootstrap/shim/respond.min.js"></script>
-<style>h1 {font-size: 34px;}
-       h1.title {font-size: 38px;}
-       h2 {font-size: 30px;}
-       h3 {font-size: 24px;}
-       h4 {font-size: 18px;}
-       h5 {font-size: 16px;}
-       h6 {font-size: 12px;}
-       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
-       pre:not([class]) { background-color: white }</style>
-<script src="site_libs/navigation/tabsets.js"></script>
-<link href="site_libs/highlightjs/textmate.css" rel="stylesheet" />
+<link href="site_libs/tufte-css/tufte-fonts.css" rel="stylesheet" />
+<link href="site_libs/tufte-css/tufte-background.css" rel="stylesheet" />
+<link href="site_libs/tufte-css/tufte-italics.css" rel="stylesheet" />
+<link href="site_libs/tufte-css/tufte.css" rel="stylesheet" />
+<link href="site_libs/highlightjs/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs/highlight.js"></script>
 
 <style type="text/css">
@@ -85,202 +74,11 @@ div.csl-indent {
 
 
 
-<style type = "text/css">
-.main-container {
-  max-width: 940px;
-  margin-left: auto;
-  margin-right: auto;
-}
-img {
-  max-width:100%;
-}
-.tabbed-pane {
-  padding-top: 12px;
-}
-.html-widget {
-  margin-bottom: 20px;
-}
-button.code-folding-btn:focus {
-  outline: none;
-}
-summary {
-  display: list-item;
-}
-details > summary > p:only-child {
-  display: inline;
-}
-pre code {
-  padding: 0;
-}
-</style>
-
-
-<style type="text/css">
-.dropdown-submenu {
-  position: relative;
-}
-.dropdown-submenu>.dropdown-menu {
-  top: 0;
-  left: 100%;
-  margin-top: -6px;
-  margin-left: -1px;
-  border-radius: 0 6px 6px 6px;
-}
-.dropdown-submenu:hover>.dropdown-menu {
-  display: block;
-}
-.dropdown-submenu>a:after {
-  display: block;
-  content: " ";
-  float: right;
-  width: 0;
-  height: 0;
-  border-color: transparent;
-  border-style: solid;
-  border-width: 5px 0 5px 5px;
-  border-left-color: #cccccc;
-  margin-top: 5px;
-  margin-right: -10px;
-}
-.dropdown-submenu:hover>a:after {
-  border-left-color: #adb5bd;
-}
-.dropdown-submenu.pull-left {
-  float: none;
-}
-.dropdown-submenu.pull-left>.dropdown-menu {
-  left: -100%;
-  margin-left: 10px;
-  border-radius: 6px 0 6px 6px;
-}
-</style>
-
-<script type="text/javascript">
-// manage active state of menu based on current page
-$(document).ready(function () {
-  // active menu anchor
-  href = window.location.pathname
-  href = href.substr(href.lastIndexOf('/') + 1)
-  if (href === "")
-    href = "index.html";
-  var menuAnchor = $('a[href="' + href + '"]');
-
-  // mark the anchor link active (and if it's in a dropdown, also mark that active)
-  var dropdown = menuAnchor.closest('li.dropdown');
-  if (window.bootstrap) { // Bootstrap 4+
-    menuAnchor.addClass('active');
-    dropdown.find('> .dropdown-toggle').addClass('active');
-  } else { // Bootstrap 3
-    menuAnchor.parent().addClass('active');
-    dropdown.addClass('active');
-  }
-
-  // Navbar adjustments
-  var navHeight = $(".navbar").first().height() + 15;
-  var style = document.createElement('style');
-  var pt = "padding-top: " + navHeight + "px; ";
-  var mt = "margin-top: -" + navHeight + "px; ";
-  var css = "";
-  // offset scroll position for anchor links (for fixed navbar)
-  for (var i = 1; i <= 6; i++) {
-    css += ".section h" + i + "{ " + pt + mt + "}\n";
-  }
-  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
-  document.head.appendChild(style);
-});
-</script>
-
-<!-- tabsets -->
-
-<style type="text/css">
-.tabset-dropdown > .nav-tabs {
-  display: inline-table;
-  max-height: 500px;
-  min-height: 44px;
-  overflow-y: auto;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-}
-
-.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
-  content: "\e259";
-  font-family: 'Glyphicons Halflings';
-  display: inline-block;
-  padding: 10px;
-  border-right: 1px solid #ddd;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
-  content: "\e258";
-  font-family: 'Glyphicons Halflings';
-  border: none;
-}
-
-.tabset-dropdown > .nav-tabs > li.active {
-  display: block;
-}
-
-.tabset-dropdown > .nav-tabs > li > a,
-.tabset-dropdown > .nav-tabs > li > a:focus,
-.tabset-dropdown > .nav-tabs > li > a:hover {
-  border: none;
-  display: inline-block;
-  border-radius: 4px;
-  background-color: transparent;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
-  display: block;
-  float: none;
-}
-
-.tabset-dropdown > .nav-tabs > li {
-  display: none;
-}
-</style>
-
-<!-- code folding -->
-
-
-
 
 </head>
 
 <body>
 
-
-<div class="container-fluid main-container">
-
-
-
-
-<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="index.html">My Website</a>
-    </div>
-    <div id="navbar" class="navbar-collapse collapse">
-      <ul class="nav navbar-nav">
-        <li>
-  <a href="index.html">Home</a>
-</li>
-<li>
-  <a href="about.html">About</a>
-</li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        
-      </ul>
-    </div><!--/.nav-collapse -->
-  </div><!--/.container -->
-</div><!--/.navbar -->
-
-<div id="header">
 
 
 
@@ -289,7 +87,6 @@ $(document).ready(function () {
 <h4 class="author">JJ Allaire and Yihui Xie</h4>
 <h4 class="date">2023-04-10</h4>
 
-</div>
 
 
 <div id="introduction" class="section level1">
@@ -360,6 +157,14 @@ href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a></p>
 <p>Images and graphics play an integral role in Tufte’s work. To place
 figures in the margin you can use the <strong>knitr</strong> chunk
 option <code>fig.margin = TRUE</code>. For example:</p>
+<p>
+<span class="marginnote shownote"> <!--
+<div class="figure">-->
+<img src="index_files/figure-html/fig-margin-1.png" alt="MPG vs horsepower, colored by transmission." width="336"  />
+<!--
+<p class="caption marginnote">-->MPG vs horsepower, colored by
+transmission.<!--</p>--> <!--</div>--></span>
+</p>
 <pre class="r"><code>library(ggplot2)
 mtcars2 &lt;- mtcars
 mtcars2$am &lt;- factor(
@@ -368,12 +173,6 @@ mtcars2$am &lt;- factor(
 ggplot(mtcars2, aes(hp, mpg, color = am)) +
   geom_point() + geom_smooth() +
   theme(legend.position = &#39;bottom&#39;)</code></pre>
-<div class="figure">
-<img src="index_files/figure-html/fig-margin-1.png" alt="MPG vs horsepower, colored by transmission." width="336" />
-<p class="caption">
-MPG vs horsepower, colored by transmission.
-</p>
-</div>
 <p>Note the use of the <code>fig.cap</code> chunk option to provide a
 figure caption. You can adjust the proportions of figures using the
 <code>fig.width</code> and <code>fig.height</code> chunk options. These
@@ -388,8 +187,14 @@ code chunks <code>```{r}</code>, you write a chunk starting with
 <code>```{marginfigure}</code> instead, then put the content in the
 chunk. See an example on the right about the first fundamental theorem
 of calculus.</p>
-<pre class="marginfigure"><code>We know from _the first fundamental theorem of calculus_ that for $x$ in $[a, b]$:
-$$\frac{d}{dx}\left( \int_{a}^{x} f(u)\,du\right)=f(x).$$</code></pre>
+<p><label for="tufte-mn-1" class="margin-toggle">⊕</label><input type="checkbox" id="tufte-mn-1" class="margin-toggle"><span
+class="marginnote"><span style="display: block;">We know from <em>the
+first fundamental theorem of calculus</em> that for <span
+class="math inline"><span class="math inline">\(x\)</span></span> in
+<span class="math inline"><span class="math inline">\([a,
+b]\)</span></span>: <span class="math display"><span
+class="math display">\[\frac{d}{dx}\left( \int_{a}^{x}
+f(u)\,du\right)=f(x).\]</span></span></span></span></p>
 <p>For the sake of portability between LaTeX and HTML, you should keep
 the margin content as simple as possible (syntax-wise) in the
 <code>marginefigure</code> blocks. You may use simple Markdown syntax
@@ -409,7 +214,7 @@ the chunk option <code>fig.fullwidth = TRUE</code>.</p>
   facet_grid(~ cut)</code></pre>
 <div class="figure">
 <img src="index_files/figure-html/fig-fullwidth-1.png" alt="A full width figure." width="960" />
-<p class="caption">
+<p class="caption marginnote shownote">
 A full width figure.
 </p>
 </div>
@@ -444,7 +249,7 @@ figures in the LaTeX/HTML output.</p>
 <pre class="r"><code>ggplot(diamonds, aes(cut, price)) + geom_boxplot()</code></pre>
 <div class="figure">
 <img src="index_files/figure-html/fig-main-1.png" alt="A figure in the main column." width="672" />
-<p class="caption">
+<p class="caption marginnote shownote">
 A figure in the main column.
 </p>
 </div>
@@ -461,7 +266,7 @@ class="footnote-ref" id="fnref4"><sup>4</sup></a></p>
 the sidenote mark (the superscript number), you can use the
 <code>margin_note()</code> function from <strong>tufte</strong> in an
 inline R expression.
-<label for="tufte-mn-" class="margin-toggle">⊕</label><input type="checkbox" id="tufte-mn-" class="margin-toggle"><span
+<label for="tufte-mn-2" class="margin-toggle">⊕</label><input type="checkbox" id="tufte-mn-2" class="margin-toggle"><span
 class="marginnote">This is a margin note. Notice that there is no number
 preceding the note.</span> This function does not process the text with
 Pandoc, so Markdown syntax will not work here. If you need to write
@@ -495,8 +300,9 @@ the margin like figures in the HTML output.</p>
 <pre class="r"><code>knitr::kable(
   mtcars[1:6, 1:6], caption = &#39;A subset of mtcars.&#39;
 )</code></pre>
+<p><!--
+<caption>--><span class="marginnote shownote">A subset of mtcars.</span><!--</caption>--></p>
 <table>
-<caption>A subset of mtcars.</caption>
 <thead>
 <tr class="header">
 <th align="left"></th>
@@ -605,7 +411,7 @@ p
 p + geom_smooth()</code></pre>
 <div class="figure">
 <img src="index_files/figure-html/fig-two-together-1.png" alt="Two plots in one figure environment." width="672" /><img src="index_files/figure-html/fig-two-together-2.png" alt="Two plots in one figure environment." width="672" />
-<p class="caption">
+<p class="caption marginnote shownote">
 Two plots in one figure environment.
 </p>
 </div>
@@ -617,14 +423,14 @@ to the previous code chunk, but the chunk option is the default
 p</code></pre>
 <div class="figure">
 <img src="index_files/figure-html/fig-two-separate-1.png" alt="Two plots in separate figure environments (the first plot)." width="672" />
-<p class="caption">
+<p class="caption marginnote shownote">
 Two plots in separate figure environments (the first plot).
 </p>
 </div>
 <pre class="r"><code>p + geom_smooth()</code></pre>
 <div class="figure">
 <img src="index_files/figure-html/fig-two-separate-2.png" alt="Two plots in separate figure environments (the second plot)." width="672" />
-<p class="caption">
+<p class="caption marginnote shownote">
 Two plots in separate figure environments (the second plot).
 </p>
 </div>
@@ -634,15 +440,17 @@ option <code>fig.cap</code> (something like
 <code>fig.cap = c('first plot', 'second plot')</code>).</p>
 <p>Next we show multiple plots in margin figures. Similarly, two plots
 in the same figure environment in the margin:</p>
+<p>
+<span class="marginnote shownote"> <!--
+<div class="figure">-->
+<img src="index_files/figure-html/fig-margin-together-1.png" alt="Two plots in one figure environment in the margin." width="336"  /><img src="index_files/figure-html/fig-margin-together-2.png" alt="Two plots in one figure environment in the margin." width="336"  />
+<!--
+<p class="caption marginnote">-->Two plots in one figure environment in
+the margin.<!--</p>--> <!--</div>--></span>
+</p>
 <pre class="r"><code>p
 p + geom_smooth(method = &#39;lm&#39;)</code></pre>
 <pre><code>## `geom_smooth()` using formula = &#39;y ~ x&#39;</code></pre>
-<div class="figure">
-<img src="index_files/figure-html/fig-margin-together-1.png" alt="Two plots in one figure environment in the margin." width="336" /><img src="index_files/figure-html/fig-margin-together-2.png" alt="Two plots in one figure environment in the margin." width="336" />
-<p class="caption">
-Two plots in one figure environment in the margin.
-</p>
-</div>
 <p>Then two plots from the same code chunk placed in different figure
 environments:</p>
 <pre class="r"><code>knitr::kable(head(iris, 15))</code></pre>
@@ -764,14 +572,16 @@ environments:</p>
 </tr>
 </tbody>
 </table>
-<pre class="r"><code>p</code></pre>
-<div class="figure">
-<img src="index_files/figure-html/fig-margin-separate-1.png" alt="Two plots in separate figure environments in the margin (the first plot)." width="336" />
-<p class="caption">
-Two plots in separate figure environments in the margin (the first
-plot).
+<p>
+<span class="marginnote shownote"> <!--
+<div class="figure">-->
+<img src="index_files/figure-html/fig-margin-separate-1.png" alt="Two plots in separate figure environments in the margin (the first plot)." width="336"  />
+<!--
+<p class="caption marginnote">-->Two plots in separate figure
+environments in the margin (the first plot).<!--</p>-->
+<!--</div>--></span>
 </p>
-</div>
+<pre class="r"><code>p</code></pre>
 <pre class="r"><code>knitr::kable(head(iris, 12))</code></pre>
 <table>
 <thead>
@@ -870,15 +680,17 @@ plot).
 </tr>
 </tbody>
 </table>
+<p>
+<span class="marginnote shownote"> <!--
+<div class="figure">-->
+<img src="index_files/figure-html/fig-margin-separate-2.png" alt="Two plots in separate figure environments in the margin (the second plot)." width="336"  />
+<!--
+<p class="caption marginnote">-->Two plots in separate figure
+environments in the margin (the second plot).<!--</p>-->
+<!--</div>--></span>
+</p>
 <pre class="r"><code>p + geom_smooth(method = &#39;lm&#39;)</code></pre>
 <pre><code>## `geom_smooth()` using formula = &#39;y ~ x&#39;</code></pre>
-<div class="figure">
-<img src="index_files/figure-html/fig-margin-separate-2.png" alt="Two plots in separate figure environments in the margin (the second plot)." width="336" />
-<p class="caption">
-Two plots in separate figure environments in the margin (the second
-plot).
-</p>
-</div>
 <pre class="r"><code>knitr::kable(head(iris, 5))</code></pre>
 <table>
 <thead>
@@ -936,11 +748,17 @@ consecutively and make the margin crowded.</p>
 <p>You do not have to assign captions to figures. We show three figures
 with no captions below in the margin, in the main column, and in full
 width, respectively.</p>
+<p>
+<span class="marginnote shownote"> <!--
+<div class="figure">-->
+<img src="index_files/figure-html/fig-nocap-margin-1.png" alt=" " width="336"  />
+<!--
+<p class="caption marginnote">--> <!--</p>--> <!--</div>--></span>
+</p>
 <pre class="r"><code># a boxplot of weight vs transmission; this figure
 # will be placed in the margin
 ggplot(mtcars2, aes(am, wt)) + geom_boxplot() +
   coord_flip()</code></pre>
-<p><img src="index_files/figure-html/fig-nocap-margin-1.png" width="336" /></p>
 <pre class="r"><code># a figure in the main column
 p &lt;- ggplot(mtcars, aes(wt, hp)) + geom_point()
 p</code></pre>
@@ -1026,61 +844,8 @@ Computing</em>. Vienna, Austria: R Foundation for Statistical Computing.
 </div>
 </div>
 </div>
-<div class="footnotes footnotes-end-of-document">
-<hr />
-<ol>
-<li id="fn1"><p>See Github repositories <a
-href="https://github.com/tufte-latex/tufte-latex">tufte-latex</a> and <a
-href="https://github.com/edwardtufte/tufte-css">tufte-css</a><a
-href="#fnref1" class="footnote-back">↩︎</a></p></li>
-<li id="fn2"><p><a
-href="https://www.edwardtufte.com/tufte/books_be">Beautiful
-Evidence</a><a href="#fnref2" class="footnote-back">↩︎</a></p></li>
-<li id="fn3"><p>Note you should not assume <strong>tufte</strong> has
-been attached to your R session. You should either
-<code>library(tufte)</code> in your R Markdown document before you call
-<code>newthought()</code>, or use <code>tufte::newthought()</code>.<a
-href="#fnref3" class="footnote-back">↩︎</a></p></li>
-<li id="fn4"><p>This is a sidenote that was entered using a footnote.<a
-href="#fnref4" class="footnote-back">↩︎</a></p></li>
-<li id="fn5"><p>The actual Envisioned CSS was not used in the
-<strong>tufte</strong> package. We only changed the fonts, background
-color, and text color based on the default Tufte style.<a href="#fnref5"
-class="footnote-back">↩︎</a></p></li>
-</ol>
-</div>
 
 
-
-
-</div>
-
-<script>
-
-// add bootstrap table styles to pandoc tables
-function bootstrapStylePandocTables() {
-  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
-}
-$(document).ready(function () {
-  bootstrapStylePandocTables();
-});
-
-
-</script>
-
-<!-- tabsets -->
-
-<script>
-$(document).ready(function () {
-  window.buildTabsets("TOC");
-});
-
-$(document).ready(function () {
-  $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open');
-  });
-});
-</script>
 
 <!-- code folding -->
 
