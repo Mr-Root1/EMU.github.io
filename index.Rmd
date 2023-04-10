@@ -1,5 +1,5 @@
 ---
-title: "A Tufte Handout Example"
+title: _"A Tufte Handout Example"_
 subtitle: "An implementation in R Markdown"
 author: "JJ Allaire and Yihui Xie"
 date: "`r Sys.Date()`"
