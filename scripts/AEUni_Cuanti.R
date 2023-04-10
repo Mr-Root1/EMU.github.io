@@ -14,7 +14,7 @@ ipak <- function(pkg){
   sapply(pkg, require, character.only = TRUE)
 }
 
-packages <- c("data.table","readxl", "dplyr","readr","esquisse", "ggplot2", "scales", "stringr")
+packages <- c("data.table","readxl", "dplyr","readr","esquisse", "ggplot2", "scales", "stringr", "bslib")
 ipak(packages)
 
 options(scipen = 999)

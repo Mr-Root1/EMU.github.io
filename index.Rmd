@@ -5,8 +5,7 @@ subtitle: "An implementation in R Markdown" # only for html output
 author: "JJ Allaire and Yihui Xie"
 date: "`r Sys.Date()`"
 output:
-  tufte::tufte_html:
-    css: mystyles.css
+  tufte::tufte_html: default
   tufte::tufte_handout:
     citation_package: natbib
     latex_engine: xelatex

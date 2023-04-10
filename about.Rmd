@@ -1,5 +1,5 @@
 ---
-title: "About This Website"
+title: "A Tufte Handout Example"
 ---
 
 More about this website.
