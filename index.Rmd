@@ -4,6 +4,6 @@ output:
     css: styles.css
 ---
 
-title: "A Tufte Handout Example"
-subtitle: "An implementation in R Markdown"
-author: "JJ Allaire and Yihui Xie"
+# INFORME FINAL ESTADÍSTICA MULTIVARIADA
+##  Análisis exploratorio de los datos, encuenta *IEFIC-2017 -2018*
+### Diego Israel Sanabria Higuera
