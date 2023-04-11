@@ -30,6 +30,7 @@ df_Ct <- fread("Data/IEFIC_2017.csv") %>%
 
 colnames(df_Ct) <- c("INGRESO", "G_ALIMENTACIÓN", "G_VESTUARIO", "G_RECREACIÓN", "DEPARTAMENTO")
 str(df_Ct)
+
 write.csv(df_Ct, file = "Outputs/df_Ct.csv")
 saveRDS(df_Ct, "Outputs/df_Ct.rds")
 
@@ -151,11 +152,10 @@ ls
 li <- max(min(rec_ingreso$INGRESO), q1 - 1.5*(q3-q1))
 li
 
-# Crear el objeto de la gráfica
 p <- ggplot(rec_ingreso, aes(x = "", y = INGRESO))
+BOX_ingreso <- p + geom_boxplot() + ylab("Ingreso del Hogar") +
+  scale_y_continuous(labels = scales::dollar_format())
 
-# Agregar la capa del box plot
-BOX_ingreso <- p + geom_boxplot() + ylab("Ingreso del Hogar")
 BOX_ingreso
 saveRDS(BOX_ingreso, "Outputs/BOX_ingreso.rds")
 

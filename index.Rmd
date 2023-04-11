@@ -54,11 +54,19 @@ Texto Texto
 #### SET DE DATOS
 Encuesta de Carga Financiera y Educación Financiera de los Hogares - IEFIC-2017 -2018
 
-```{r}
+```{r echo=FALSE}
 library(dplyr)
 library(scales)
+library(data.table)
+df_Ct <- fread("Outputs/df_Ct.csv") %>% 
+  select(-V1)
 
-df_Ct <- readRDS("Outputs/df_Ct.rds")
+df_Ct <- data.table::as.data.table(lapply(df_Ct, as.numeric))
+df_Ct$DEPARTAMENTO <- as.character(df_Ct$DEPARTAMENTO)
+
+df_Ct <- df_Ct %>%
+  mutate(across(where(is.numeric) & !matches("DEPARTAMENTO"), ~dollar(.)))
+
 str(df_Ct)
 ```
 

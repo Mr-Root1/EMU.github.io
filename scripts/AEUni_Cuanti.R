@@ -31,12 +31,7 @@ df_Ct <- fread("Data/IEFIC_2017.csv") %>%
 colnames(df_Ct) <- c("INGRESO", "G_ALIMENTACIÓN", "G_VESTUARIO", "G_RECREACIÓN", "DEPARTAMENTO")
 str(df_Ct)
 
-df_Ct <- df_Ct %>%
-  mutate(across(where(~ is.numeric(.) && !matches(., "DEPARTAMENTO")), as.numeric))
-
-
-
-write.csv(df_Ct, file = "Outputs/df_Ct.csv", format(""))
+write.csv(df_Ct, file = "Outputs/df_Ct.csv")
 saveRDS(df_Ct, "Outputs/df_Ct.rds")
 
 
