@@ -124,36 +124,36 @@ DT::datatable(NUM_5_INGRESO2)
 #### GASTOS DE ALIMENTACIÓN POR HOGAR
 Encuesta de Carga Financiera y Educación Financiera de los Hogares - IEFIC-2017 -2018
 ```{r include=FALSE}
-tf_ingreso <- readRDS("Outputs/tf_ingreso.rds")
-str(tf_ingreso)
+tf_aliment <- readRDS("Outputs/tf_aliment.rds")
+str(tf_aliment)
 ```
 
 ```{r fig.height=15, fig.width=15}
 library(DT)
 library(data.table)
-DT::datatable(tf_ingreso, options = list(pageLength = 15))
+DT::datatable(tf_aliment, options = list(pageLength = 15))
 ```
 
 ```{r echo=FALSE, out.width='60%', fig.cap="Fig. 1. Histograma Ingreso del Hogar", fig.align='center'}
-knitr::include_graphics("Outputs/Hist_ingreso.jpeg")
+knitr::include_graphics("Outputs/Hist_aliment.jpeg")
 ```
 
 ```{r echo=FALSE, out.width='60%', fig.cap="Fig. 2. Box Plot Ingresos del Hogar", fig.align='center'}
-knitr::include_graphics("Outputs/BOX_ingreso.jpeg")
+knitr::include_graphics("Outputs/BOX_aliment.jpeg")
 ```
 
 ```{r}
-NUM_5_INGRESO1 <- readRDS("Outputs/NUM_5_INGRESO1.rds")
+NUM_5_ALIMENT1 <- readRDS("Outputs/NUM_5_ALIMENT1.rds")
 library(DT)
 library(data.table)
-DT::datatable(NUM_5_INGRESO1)
+DT::datatable(NUM_5_ALIMENT1)
 ```
 
 ```{r}
-NUM_5_INGRESO2 <- readRDS("Outputs/NUM_5_INGRESO2.rds")
+NUM_5_ALIMENT2 <- readRDS("Outputs/NUM_5_ALIMENT2.rds")
 library(DT)
 library(data.table)
-DT::datatable(NUM_5_INGRESO2)
+DT::datatable(NUM_5_ALIMENT2)
 ```
 </div>
 
@@ -162,36 +162,36 @@ DT::datatable(NUM_5_INGRESO2)
 #### GASTOS DE VESTUARIO POR HOGAR
 Encuesta de Carga Financiera y Educación Financiera de los Hogares - IEFIC-2017 -2018
 ```{r include=FALSE}
-tf_ingreso <- readRDS("Outputs/tf_ingreso.rds")
-str(tf_ingreso)
+tf_vest <- readRDS("Outputs/tf_vest.rds")
+str(tf_vest)
 ```
 
 ```{r fig.height=15, fig.width=15}
 library(DT)
 library(data.table)
-DT::datatable(tf_ingreso, options = list(pageLength = 15))
+DT::datatable(tf_vest, options = list(pageLength = 15))
 ```
 
 ```{r echo=FALSE, out.width='60%', fig.cap="Fig. 1. Histograma Ingreso del Hogar", fig.align='center'}
-knitr::include_graphics("Outputs/Hist_ingreso.jpeg")
+knitr::include_graphics("Outputs/Hist_vest.jpeg")
 ```
 
 ```{r echo=FALSE, out.width='60%', fig.cap="Fig. 2. Box Plot Ingresos del Hogar", fig.align='center'}
-knitr::include_graphics("Outputs/BOX_ingreso.jpeg")
+knitr::include_graphics("Outputs/BOX_vest.jpeg")
 ```
 
 ```{r}
-NUM_5_INGRESO1 <- readRDS("Outputs/NUM_5_INGRESO1.rds")
+NUM_5_VEST1 <- readRDS("Outputs/NUM_5_VEST1.rds")
 library(DT)
 library(data.table)
-DT::datatable(NUM_5_INGRESO1)
+DT::datatable(NUM_5_VEST1)
 ```
 
 ```{r}
-NUM_5_INGRESO2 <- readRDS("Outputs/NUM_5_INGRESO2.rds")
+NUM_5_VEST2 <- readRDS("Outputs/NUM_5_VEST2.rds")
 library(DT)
 library(data.table)
-DT::datatable(NUM_5_INGRESO2)
+DT::datatable(NUM_5_VEST2)
 ```
 </div>
 
@@ -200,35 +200,35 @@ DT::datatable(NUM_5_INGRESO2)
 #### GASTOS DE RECREACIÓN POR HOGAR
 Encuesta de Carga Financiera y Educación Financiera de los Hogares - IEFIC-2017 -2018
 ```{r include=FALSE}
-tf_ingreso <- readRDS("Outputs/tf_ingreso.rds")
-str(tf_ingreso)
+tf_recr <- readRDS("Outputs/tf_recr.rds")
+str(tf_recr)
 ```
 
 ```{r fig.height=15, fig.width=15}
 library(DT)
 library(data.table)
-DT::datatable(tf_ingreso, options = list(pageLength = 15))
+DT::datatable(tf_recr, options = list(pageLength = 15))
 ```
 
 ```{r echo=FALSE, out.width='60%', fig.cap="Fig. 1. Histograma Ingreso del Hogar", fig.align='center'}
-knitr::include_graphics("Outputs/Hist_ingreso.jpeg")
+knitr::include_graphics("Outputs/Hist_recr.jpeg")
 ```
 
 ```{r echo=FALSE, out.width='60%', fig.cap="Fig. 2. Box Plot Ingresos del Hogar", fig.align='center'}
-knitr::include_graphics("Outputs/BOX_ingreso.jpeg")
+knitr::include_graphics("Outputs/BOX_recr.jpeg")
 ```
 
 ```{r}
-NUM_5_INGRESO1 <- readRDS("Outputs/NUM_5_INGRESO1.rds")
+NUM_5_RECR1 <- readRDS("Outputs/NUM_5_RECR1.rds")
 library(DT)
 library(data.table)
-DT::datatable(NUM_5_INGRESO1)
+DT::datatable(NUM_5_RECR1)
 ```
 
 ```{r}
-NUM_5_INGRESO2 <- readRDS("Outputs/NUM_5_INGRESO2.rds")
+NUM_5_RECR2 <- readRDS("Outputs/NUM_5_RECR2.rds")
 library(DT)
 library(data.table)
-DT::datatable(NUM_5_INGRESO2)
+DT::datatable(NUM_5_RECR2)
 ```
 </div>
