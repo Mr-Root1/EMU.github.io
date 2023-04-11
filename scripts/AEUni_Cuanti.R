@@ -31,8 +31,8 @@ df_Ct <- fread("Data/IEFIC_2017.csv") %>%
 colnames(df_Ct) <- c("INGRESO", "G_ALIMENTACIÓN", "G_VESTUARIO", "G_RECREACIÓN", "DEPARTAMENTO")
 str(df_Ct)
 
-write.csv(df_Ct, file = "Outputs/df_Ct.csv")
-saveRDS(df_Ct, "Outputs/df_Ct.rds")
+# write.csv(df_Ct, file = "Outputs/df_Ct.csv")
+# saveRDS(df_Ct, "Outputs/df_Ct.rds")
 
 
 # "DICCIONARIO DE HOMOLOGACIÓN"
@@ -251,7 +251,7 @@ tf_aliment <- rec_aliment %>%
 
 tf_aliment
 
-saveRDS(tf_aliment, "Outputs/tf_aliment.rds")
+# saveRDS(tf_aliment, "Outputs/tf_aliment.rds")
 
 
 # Mostrar el resultado
@@ -302,7 +302,8 @@ li1
 p1 <- ggplot(rec_aliment, aes(x = "", y = G_ALIMENTACIÓN))
 
 # Agregar la capa del box plot
-BOX_aliment <- p1 + geom_boxplot() + ylab("Gastos en Alimentación")
+BOX_aliment <- p1 + geom_boxplot() + ylab("Gastos en Alimentación") +
+  scale_y_continuous(labels = scales::dollar_format())
 saveRDS(BOX_aliment, "Outputs/BOX_aliment.rds")
 
 
@@ -450,7 +451,8 @@ li2
 p2 <- ggplot(rec_vest, aes(x = "", y = G_VESTUARIO))
 
 # Agregar la capa del box plot
-BOX_vest <- p2 + geom_boxplot() + ylab("Gastos en Vestuario")
+BOX_vest <- p2 + geom_boxplot() + ylab("Gastos en Vestuario")  +
+  scale_y_continuous(labels = scales::dollar_format())
 saveRDS(BOX_vest, "Outputs/BOX_vest.rds")
 
 
@@ -601,7 +603,8 @@ li3
 p3 <- ggplot(rec_vest, aes(x = "", y = G_VESTUARIO))
 
 # Agregar la capa del box plot
-BOX_recr <- p3 + geom_boxplot() + ylab("Gastos en Recreación")
+BOX_recr <- p3 + geom_boxplot() + ylab("Gastos en Recreación")  +
+  scale_y_continuous(labels = scales::dollar_format())
 saveRDS(BOX_recr, "Outputs/BOX_recr.rds")
 
 
