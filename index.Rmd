@@ -35,7 +35,7 @@ $(document).ready(function() {
 </script>
 
 
-## _ANÁLISIS EXPLORATORIO UNIVARIADO_
+### _ANÁLISIS EXPLORATORIO UNIVARIADO VAR. CUANTITATIVAS_
 Texto Texto
 
 
@@ -45,7 +45,6 @@ Texto Texto
   <button class="tablink" data-id="seccion2">G. ALIMENTACIÓN</button>
   <button class="tablink" data-id="seccion3">G. VESTUARIO</button>
   <button class="tablink" data-id="seccion4">G. RECREACIÓN</button>
-  <button class="tablink" data-id="seccion5">G. DOCUMENTO</button>
 </div>
 
 
@@ -70,13 +69,16 @@ df_Ct <- df_Ct %>%
 str(df_Ct)
 ```
 
-```{r}
+```{r warning=FALSE}
 library(DT)
 library(data.table)
-DT::datatable(df_Ct)
+DT::datatable(df_Ct, options = list(pageLength = 15))
 ```
 
 </div>
+
+
+
 
 
 <div id="seccion1" class="tabcontent">
@@ -90,7 +92,7 @@ str(tf_ingreso)
 ```{r fig.height=15, fig.width=15}
 library(DT)
 library(data.table)
-DT::datatable(tf_ingreso)
+DT::datatable(tf_ingreso, options = list(pageLength = 15))
 ```
 
 ```{r echo=FALSE, out.width='60%', fig.cap="Fig. 1. Histograma Ingreso del Hogar", fig.align='center'}
@@ -115,15 +117,118 @@ library(data.table)
 DT::datatable(NUM_5_INGRESO2)
 ```
 
-
-
-
 </div>
 
 
 <div id="seccion2" class="tabcontent">
-#### INGRESO TOTAL POR PERSONA
+#### GASTOS DE ALIMENTACIÓN POR HOGAR
 Encuesta de Carga Financiera y Educación Financiera de los Hogares - IEFIC-2017 -2018
+```{r include=FALSE}
+tf_ingreso <- readRDS("Outputs/tf_ingreso.rds")
+str(tf_ingreso)
+```
+
+```{r fig.height=15, fig.width=15}
+library(DT)
+library(data.table)
+DT::datatable(tf_ingreso, options = list(pageLength = 15))
+```
+
+```{r echo=FALSE, out.width='60%', fig.cap="Fig. 1. Histograma Ingreso del Hogar", fig.align='center'}
+knitr::include_graphics("Outputs/Hist_ingreso.jpeg")
+```
+
+```{r echo=FALSE, out.width='60%', fig.cap="Fig. 2. Box Plot Ingresos del Hogar", fig.align='center'}
+knitr::include_graphics("Outputs/BOX_ingreso.jpeg")
+```
+
+```{r}
+NUM_5_INGRESO1 <- readRDS("Outputs/NUM_5_INGRESO1.rds")
+library(DT)
+library(data.table)
+DT::datatable(NUM_5_INGRESO1)
+```
+
+```{r}
+NUM_5_INGRESO2 <- readRDS("Outputs/NUM_5_INGRESO2.rds")
+library(DT)
+library(data.table)
+DT::datatable(NUM_5_INGRESO2)
+```
+</div>
 
 
+<div id="seccion3" class="tabcontent">
+#### GASTOS DE VESTUARIO POR HOGAR
+Encuesta de Carga Financiera y Educación Financiera de los Hogares - IEFIC-2017 -2018
+```{r include=FALSE}
+tf_ingreso <- readRDS("Outputs/tf_ingreso.rds")
+str(tf_ingreso)
+```
+
+```{r fig.height=15, fig.width=15}
+library(DT)
+library(data.table)
+DT::datatable(tf_ingreso, options = list(pageLength = 15))
+```
+
+```{r echo=FALSE, out.width='60%', fig.cap="Fig. 1. Histograma Ingreso del Hogar", fig.align='center'}
+knitr::include_graphics("Outputs/Hist_ingreso.jpeg")
+```
+
+```{r echo=FALSE, out.width='60%', fig.cap="Fig. 2. Box Plot Ingresos del Hogar", fig.align='center'}
+knitr::include_graphics("Outputs/BOX_ingreso.jpeg")
+```
+
+```{r}
+NUM_5_INGRESO1 <- readRDS("Outputs/NUM_5_INGRESO1.rds")
+library(DT)
+library(data.table)
+DT::datatable(NUM_5_INGRESO1)
+```
+
+```{r}
+NUM_5_INGRESO2 <- readRDS("Outputs/NUM_5_INGRESO2.rds")
+library(DT)
+library(data.table)
+DT::datatable(NUM_5_INGRESO2)
+```
+</div>
+
+
+<div id="seccion4" class="tabcontent">
+#### GASTOS DE RECREACIÓN POR HOGAR
+Encuesta de Carga Financiera y Educación Financiera de los Hogares - IEFIC-2017 -2018
+```{r include=FALSE}
+tf_ingreso <- readRDS("Outputs/tf_ingreso.rds")
+str(tf_ingreso)
+```
+
+```{r fig.height=15, fig.width=15}
+library(DT)
+library(data.table)
+DT::datatable(tf_ingreso, options = list(pageLength = 15))
+```
+
+```{r echo=FALSE, out.width='60%', fig.cap="Fig. 1. Histograma Ingreso del Hogar", fig.align='center'}
+knitr::include_graphics("Outputs/Hist_ingreso.jpeg")
+```
+
+```{r echo=FALSE, out.width='60%', fig.cap="Fig. 2. Box Plot Ingresos del Hogar", fig.align='center'}
+knitr::include_graphics("Outputs/BOX_ingreso.jpeg")
+```
+
+```{r}
+NUM_5_INGRESO1 <- readRDS("Outputs/NUM_5_INGRESO1.rds")
+library(DT)
+library(data.table)
+DT::datatable(NUM_5_INGRESO1)
+```
+
+```{r}
+NUM_5_INGRESO2 <- readRDS("Outputs/NUM_5_INGRESO2.rds")
+library(DT)
+library(data.table)
+DT::datatable(NUM_5_INGRESO2)
+```
 </div>
