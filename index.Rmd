@@ -1,7 +1,7 @@
 ---
 title: "INFORME FINAL ESTADÍSTICA MULTIVARIADA"
 subtitle: "Análisis exploratorio encuenta IEFIC-2017 -2018"
-author: "Diego Israel Sanabria Higuera"
+author: "Diego Sanabria"
 output: 
   html_document: 
     css: styles.css
@@ -35,7 +35,7 @@ $(document).ready(function() {
 </script>
 
 
-### _ANÁLISIS EXPLORATORIO UNIVARIADO VAR. CUANTITATIVAS_
+### _A.E. UNIVARIADO VAR. CUANTITATIVAS_
 Texto Texto
 
 
