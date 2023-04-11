@@ -82,7 +82,7 @@ DT::datatable(df_Ct)
 <div id="seccion1" class="tabcontent">
 #### INGRESO TOTAL POR PERSONA
 Encuesta de Carga Financiera y Educación Financiera de los Hogares - IEFIC-2017 -2018
-```{r}
+```{r include=FALSE}
 tf_ingreso <- readRDS("Outputs/tf_ingreso.rds")
 str(tf_ingreso)
 ```
