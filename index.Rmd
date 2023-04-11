@@ -134,11 +134,11 @@ library(data.table)
 DT::datatable(tf_aliment, options = list(pageLength = 15))
 ```
 
-```{r echo=FALSE, out.width='60%', fig.cap="Fig. 1. Histograma Ingreso del Hogar", fig.align='center'}
+```{r echo=FALSE, out.width='60%', fig.cap="Fig. 3. Histograma Gastos en Alimentación", fig.align='center'}
 knitr::include_graphics("Outputs/Hist_aliment.jpeg")
 ```
 
-```{r echo=FALSE, out.width='60%', fig.cap="Fig. 2. Box Plot Ingresos del Hogar", fig.align='center'}
+```{r echo=FALSE, out.width='60%', fig.cap="Fig. 4. Box Plot Gastos en Alimentación", fig.align='center'}
 knitr::include_graphics("Outputs/BOX_aliment.jpeg")
 ```
 
@@ -172,11 +172,11 @@ library(data.table)
 DT::datatable(tf_vest, options = list(pageLength = 15))
 ```
 
-```{r echo=FALSE, out.width='60%', fig.cap="Fig. 1. Histograma Ingreso del Hogar", fig.align='center'}
+```{r echo=FALSE, out.width='60%', fig.cap="Fig. 5. Histograma Gastos en Vestuario", fig.align='center'}
 knitr::include_graphics("Outputs/Hist_vest.jpeg")
 ```
 
-```{r echo=FALSE, out.width='60%', fig.cap="Fig. 2. Box Plot Ingresos del Hogar", fig.align='center'}
+```{r echo=FALSE, out.width='60%', fig.cap="Fig. 6. Box Plot Gastos en Vestuario", fig.align='center'}
 knitr::include_graphics("Outputs/BOX_vest.jpeg")
 ```
 
@@ -210,11 +210,11 @@ library(data.table)
 DT::datatable(tf_recr, options = list(pageLength = 15))
 ```
 
-```{r echo=FALSE, out.width='60%', fig.cap="Fig. 1. Histograma Ingreso del Hogar", fig.align='center'}
+```{r echo=FALSE, out.width='60%', fig.cap="Fig. 7. Histograma Gastos en Recreación", fig.align='center'}
 knitr::include_graphics("Outputs/Hist_recr.jpeg")
 ```
 
-```{r echo=FALSE, out.width='60%', fig.cap="Fig. 2. Box Plot Ingresos del Hogar", fig.align='center'}
+```{r echo=FALSE, out.width='60%', fig.cap="Fig. 8. Box Plot Gastos en Recreación", fig.align='center'}
 knitr::include_graphics("Outputs/BOX_recr.jpeg")
 ```
 
