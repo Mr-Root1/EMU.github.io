@@ -95,11 +95,11 @@ library(data.table)
 DT::datatable(tf_ingreso, options = list(pageLength = 15))
 ```
 
-```{r echo=FALSE, out.width='60%', fig.cap="Fig. 1. Histograma Ingreso del Hogar", fig.align='center'}
+```{r echo=FALSE, out.width='70%', fig.cap="Fig. 1. Histograma Ingreso del Hogar", fig.align='center'}
 knitr::include_graphics("Outputs/Hist_ingreso.jpeg")
 ```
 
-```{r echo=FALSE, out.width='60%', fig.cap="Fig. 2. Box Plot Ingresos del Hogar", fig.align='center'}
+```{r echo=FALSE, out.width='65%', fig.cap="Fig. 2. Box Plot Ingresos del Hogar", fig.align='center'}
 knitr::include_graphics("Outputs/BOX_ingreso.jpeg")
 ```
 
