@@ -28,10 +28,16 @@ df_Ct <- fread("Data/IEFIC_2017.csv") %>%
          P2478_1 !="98",P2478_2 !="98", P2478_2 !="0", P2478_2 !="99",P2478_8 !="99", P2478_8 !="98",P2478_8!="0",
          !is.na(INGTOTOB),!is.na(P2478_1),!is.na(P2478_2),!is.na(P2478_8))
 
-
 colnames(df_Ct) <- c("INGRESO", "G_ALIMENTACIÓN", "G_VESTUARIO", "G_RECREACIÓN", "DEPARTAMENTO")
 str(df_Ct)
-# saveRDS(df_Ct, "Outputs/df_Ct.rds")
+
+df_Ct <- df_Ct %>%
+  mutate(across(where(~ is.numeric(.) && !matches(., "DEPARTAMENTO")), as.numeric))
+
+
+
+write.csv(df_Ct, file = "Outputs/df_Ct.csv", format(""))
+saveRDS(df_Ct, "Outputs/df_Ct.rds")
 
 
 # "DICCIONARIO DE HOMOLOGACIÓN"
@@ -151,12 +157,11 @@ ls
 li <- max(min(rec_ingreso$INGRESO), q1 - 1.5*(q3-q1))
 li
 
-# Crear el objeto de la gráfica
 p <- ggplot(rec_ingreso, aes(x = "", y = INGRESO))
+BOX_ingreso <- p + geom_boxplot() + ylab("Ingreso del Hogar") +
+  scale_y_continuous(labels = scales::dollar_format())
 
-# Agregar la capa del box plot
-BOX_ingreso <- p + geom_boxplot() + ylab("Ingreso del Hogar")
-
+BOX_ingreso
 saveRDS(BOX_ingreso, "Outputs/BOX_ingreso.rds")
 
 #promedio ponderado
@@ -175,7 +180,7 @@ NUM_5_INGRESO1 <- data.frame(
   Q2 = q2,
   Q3 = q3) %>% 
   mutate(Coef.Asimetría = (q1+q3-2*q2)/(q3-q1))
-NUM_5_INGRESO
+NUM_5_INGRESO1
 
 saveRDS(NUM_5_INGRESO1, "Outputs/NUM_5_INGRESO1.rds")
 

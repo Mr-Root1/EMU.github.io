@@ -3,3 +3,21 @@
 body {
   font-family: "Hoefler Text", serif;
 }
+
+/* Estilo para los botones de las pestañas */
+.tablink {
+  background-color: #CDB79E;
+  border: none;
+  color: #030303;
+  padding: 8px 8px;
+  font-size: 12px;
+  cursor: pointer;
+  border-radius: 5px 5px 0px 0px;
+  margin-right: 5px;
+}
+
+/* Estilo para el botón activo */
+.tablink.active {
+  background-color: #00688B;
+}
+

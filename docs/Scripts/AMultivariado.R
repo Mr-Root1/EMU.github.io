@@ -13,7 +13,7 @@ ipak <- function(pkg){
   sapply(pkg, require, character.only = TRUE)
 }
 
-packages <- c("data.table","readxl", "dplyr","readr","esquisse", "scales", "ggplot2", "RColorBrewer", "devtools", "corrplot", "GGally", "pheatmap", "PerformanceAnalytics", "plotly")
+packages <- c("data.table", "readxl", "dplyr","readr","esquisse", "scales", "ggplot2", "RColorBrewer", "devtools", "corrplot", "GGally", "pheatmap", "PerformanceAnalytics", "plotly")
 ipak(packages)
 
 options(scipen = 999)
@@ -78,10 +78,9 @@ pheatmap(mcor1,
          number_color = "black", 
          fontsize_number = 8)
 
-
 p1 <-ggplotly(chart.Correlation(Mdf_Ct, histogram = TRUE, method = "pearson"))
 
-
+p1
 #vector de medias
 vec.men <- Mdf_Ct%>% 
   summarise_all(.funs = mean) %>%

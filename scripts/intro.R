@@ -19,3 +19,5 @@ update.packages(ask = FALSE, checkBuilt = TRUE)
 
 install.packages("xfun")
 install.packages("rlang")
+install.packages("rmarkdown")
+packageVersion("rmarkdown")
