@@ -1,0 +1,78 @@
+---
+title: "INFORME FINAL ESTADÍSTICA MULTIVARIADA"
+subtitle: "Análisis exploratorio encuenta IEFIC-2017 -2018"
+author: "Diego Sanabria"
+output: 
+  html_document: 
+    css: styles.css
+---
+
+
+```{r setup, include=FALSE, message= FALSE, warning=FALSE, echo=FALSE, error=FALSE}
+knitr::opts_chunk$set(warning = FALSE, message = FALSE)
+info.date<-format(Sys.time(), "%Y-%m")
+fileConn<-file("footer.html")
+msj<-paste("<p>", info.date, "ESTADISTICA DESCRIPTIVA</p>")
+writeLines(c(msj,"<p> UPTC.</p>"),fileConn)
+close(fileConn)
+```
+
+<script>
+$(document).ready(function() {
+  // Ocultar todas las secciones excepto la primera al cargar la página
+  $(".tabcontent").hide();
+  $("#introduccion").show();
+  
+  // Manejar el clic en los botones
+  $(".tablink").click(function() {
+    // Ocultar todas las secciones
+    $(".tabcontent").hide();
+    // Mostrar la sección correspondiente
+    var tabId = $(this).attr("data-id");
+    $("#" + tabId).show();
+  });
+});
+</script>
+
+
+### _A.E. UNIVARIADO VAR. CUANTITATIVAS_
+Texto Texto
+
+
+<div class="tab">
+  <button class="tablink first-tab" data-id="introduccion">INTRODUCCIÓN</button>
+  <button class="tablink" data-id="seccion1">INGRESO</button>
+  <button class="tablink" data-id="seccion2">G. ALIMENTACIÓN</button>
+  <button class="tablink" data-id="seccion3">G. VESTUARIO</button>
+  <button class="tablink" data-id="seccion4">G. RECREACIÓN</button>
+</div>
+
+
+
+<div id="introduccion" class="tabcontent">
+#### SET DE DATOS
+Encuesta de Carga Financiera y Educación Financiera de los Hogares - IEFIC-2017 -2018
+
+```{r echo=FALSE}
+library(dplyr)
+library(scales)
+library(data.table)
+df_Ct <- fread("Outputs/df_Ct.csv") %>% 
+  select(-V1)
+
+df_Ct <- data.table::as.data.table(lapply(df_Ct, as.numeric))
+df_Ct$DEPARTAMENTO <- as.character(df_Ct$DEPARTAMENTO)
+
+df_Ct <- df_Ct %>%
+  mutate(across(where(is.numeric) & !matches("DEPARTAMENTO"), ~dollar(.)))
+
+str(df_Ct)
+```
+
+```{r warning=FALSE}
+library(DT)
+library(data.table)
+DT::datatable(df_Ct, options = list(pageLength = 15))
+```
+
+</div>
