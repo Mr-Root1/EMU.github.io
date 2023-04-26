@@ -1,5 +1,5 @@
 ---
-title: "INFORME FINAL ESTADÍSTICA MULTIVARIADA"
+title: "INFORME FINAL ESTADÍSTICA UNIVARIADA"
 subtitle: "Análisis exploratorio encuenta IEFIC-2017 -2018"
 author: "Diego Sanabria"
 output: 
