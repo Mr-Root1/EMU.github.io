@@ -361,7 +361,7 @@ maxi1 <-max(rec_vest$G_VESTUARIO, na.rm = T)
 Rango2 = max(rec_vest$G_VESTUARIO, na.rm = T) - min(rec_vest$G_VESTUARIO, na.rm = T)
 Rango2
 
-longitud2 = Rango1/15
+longitud2 = Rango2/14
 longitud2
 
 cortes_vest <- c(min(rec_vest$G_VESTUARIO), 
@@ -378,12 +378,11 @@ cortes_vest <- c(min(rec_vest$G_VESTUARIO),
                     min(rec_vest$G_VESTUARIO) + 11*longitud2,
                     min(rec_vest$G_VESTUARIO) + 12*longitud2,
                     min(rec_vest$G_VESTUARIO) + 13*longitud2,
-                    min(rec_vest$G_VESTUARIO) + 14*longitud2,
-                    min(rec_vest$G_VESTUARIO) + 15*longitud2)
+                    min(rec_vest$G_VESTUARIO) + 14*longitud2)
 cortes_vest
 
 # saveRDS(cortes2, "Outputs/cortes.rds")
-# cortes2 <- min(rec_ingreso$INGRESO) + c(seq(mini,k,1)) * longitud
+# cortes2 <- min(rec_ingreso$INGRESO) + c(seq(mini,k2,1)) * longitud2
 # cortes2
 
 
@@ -394,8 +393,8 @@ tf_vest <- rec_vest %>%
   mutate(N_i = cumsum(n_i),
          f_i = n_i/sum(n_i),
          F_i = cumsum(f_i),
-         x_i = cortes_vest[1:15] + longitud2/2,
-         c_i = abs(cortes_vest[1:15] - cortes_vest[2:16]),
+         x_i = cortes_vest[1:14] + longitud2/2,
+         c_i = abs(cortes_vest[1:14] - cortes_vest[2:15]),
          d_i = n_i/c_i
   )
 
@@ -513,7 +512,7 @@ Rango3 = max(rec_recr$G_RECREACIÓN, na.rm = T) - min(rec_recr$G_RECREACIÓN, na
 Rango3
 
 
-longitud3 = Rango1/15
+longitud3 = Rango3/15
 longitud3
 
 cortes_recr <- c(min(rec_recr$G_RECREACIÓN), 
@@ -592,7 +591,7 @@ quantile(rec_recr$G_RECREACIÓN, probs = 0.9, type = 6)
 quantile(rec_recr$G_RECREACIÓN, probs = 0.97, type = 6)
 # el 97% de la poblaciín gana menos de $4´000.000 por concepto de arrendamientos.
 # el 3% de la población gana más de $4´000.000 por concepto de arrendamientos.
-g13 <- boxplotrec_recr$G_RECREACIÓN(rec_recr$G_RECREACIÓN,horizontal = T, xlab = "Gastos en Recreación")
+g13 <- boxplot(rec_recr$G_RECREACIÓN,horizontal = T, xlab = "Gastos en Recreación")
 
 ls3 <- min(max(rec_recr$G_RECREACIÓN), q33 + 1.5*(q33-q13))
 ls3
@@ -637,3 +636,4 @@ NUM_5_RECR2 <- data.frame(
 NUM_5_RECR2
 
 saveRDS(NUM_5_RECR2, "Outputs/NUM_5_RECR2.rds")
+
