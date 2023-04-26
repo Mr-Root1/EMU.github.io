@@ -192,6 +192,10 @@ library(knitr)
 kable(tabla.S.Per)
 ```
 
+```{r echo=FALSE, out.width='70%', fig.cap="Fig. 6. Contigencia Sexo vs Percepción a Pagos electrónicos", fig.align='center'}
+knitr::include_graphics("Outputs/Sexo_Percep.jpeg")
+```
+
 ```{r echo=FALSE}
 #Resumen estadístico
 tabla.S.Viv <- readRDS("Outputs/tabla.S.Viv.rds")
@@ -199,11 +203,7 @@ library(knitr)
 kable(tabla.S.Viv)
 ```
 
-```{r echo=FALSE, out.width='70%', fig.cap="Fig. 5. Correlación", fig.align='center'}
-knitr::include_graphics("Outputs/Sexo_Percep.jpeg")
-```
-
-```{r echo=FALSE, out.width='70%', fig.cap="Fig. 5. Correlación", fig.align='center'}
+```{r echo=FALSE, out.width='70%', fig.cap="Fig. 7. Contigencia Sexo vs Vivienda Propia", fig.align='center'}
 knitr::include_graphics("Outputs/Sexo_Viv.jpeg")
 ```
 </div>
@@ -214,5 +214,30 @@ knitr::include_graphics("Outputs/Sexo_Viv.jpeg")
 #### SET DE DATOS
 Encuesta de Carga Financiera y Educación Financiera de los Hogares - IEFIC-2017
 
+```{r echo=FALSE, out.width='70%', fig.cap="Fig. 8. Violín Ingreso vs Sexo", fig.align='center'}
+knitr::include_graphics("Outputs/Violín1.jpeg")
+```
 
+```{r echo=FALSE, out.width='70%', fig.cap="Fig. 9. Violín INgreso vs Percepción de pagos Electrónicos", fig.align='center'}
+knitr::include_graphics("Outputs/Violín2.jpeg")
+```
+
+</div>
+
+
+<div id="seccion4" class="tabcontent">
+#### SET DE DATOS
+Encuesta de Carga Financiera y Educación Financiera de los Hogares - IEFIC-2017
+
+```{r echo=FALSE, out.width='70%', fig.cap="Fig. 9. Biplot Análisis de Componentes Principales", fig.align='center'}
+knitr::include_graphics("Outputs/Biplot.jpeg")
+```
+
+```{r echo=FALSE, out.width='70%', fig.cap="Fig. 10. Aporte por componente", fig.align='center'}
+knitr::include_graphics("Outputs/Apor_Comp.jpeg")
+```
+
+```{r echo=FALSE, out.width='70%', fig.cap="Fig. 11. Número de Componentes", fig.align='center'}
+knitr::include_graphics("Outputs/Apor_Comp.jpeg")
+```
 </div>

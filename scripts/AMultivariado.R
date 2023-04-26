@@ -13,57 +13,66 @@ ipak <- function(pkg){
   sapply(pkg, require, character.only = TRUE)
 }
 
-packages <- c("data.table", "readxl", "dplyr","readr","esquisse", "scales", "ggplot2", "RColorBrewer", "devtools", "corrplot", "GGally", "pheatmap", "PerformanceAnalytics", "plotly", "MVN")
+packages <- c("data.table", "readxl", "dplyr","readr","esquisse", "scales", "ggplot2", "RColorBrewer", "devtools", "corrplot", "GGally", "pheatmap", "PerformanceAnalytics", "plotly", "MVN", "vcd", "lattice")
 ipak(packages)
 
 options(scipen = 999)
 
 #cargar los datos Cuantitativos
 df_MULT <- fread("Data/IEFIC_2017.csv") %>% 
-  select(INGTOTOB,P2478_1,P2478_2,P2478_8,P35,P3045,P2439, DEPARTAMENTO) %>%
+  select(INGTOTOB,P2478_1,P2478_2,P2478_8) %>%
   filter(INGTOTOB != "0", INGTOTOB != "97",P2478_1 !="0",P2478_1 !="99", P2478_1 !="98",P2478_2 !="98", P2478_2 !="0", P2478_2 !="99",P2478_8 !="99", P2478_8 !="98",P2478_8!="0",
-         !is.na(INGTOTOB),!is.na(P2478_1),!is.na(P2478_2),!is.na(P2478_8),DEPARTAMENTO <= 99,!is.na(P35),!is.na(P3045),!is.na(P2439),!is.na(DEPARTAMENTO),P3045 >= 1, P3045 <= 6)
+         !is.na(INGTOTOB),!is.na(P2478_1),!is.na(P2478_2),!is.na(P2478_8))
 str(df_MULT)
 saveRDS(df_MULT, "Outputs/df_MULT.rds")
 
 #Resumen estadístico
 R_Ingreso <- summary(df_MULT$INGTOTOB)
+saveRDS(R_Ingreso, "Outputs/R_Ingreso.rds")
 R_G.Alim <- summary(df_MULT$P2478_1)
+saveRDS(R_G.Alim, "Outputs/R_G.Alim.rds")
 R_G.Vest <- summary(df_MULT$P2478_2)
+saveRDS(R_G.Vest, "Outputs/R_G.Vest.rds")
 R_G.Recr <- summary(df_MULT$P2478_8)
-str(R_Ingreso)
+saveRDS(R_G.Recr, "Outputs/R_G.Recr.rds")
 
 #Dispersograma 
 pairs(df_MULT, upper.panel=NULL, col="#8B0000")
 
-boxplot(scale(df_Ct))
+boxplot(scale(df_MULT))
 # Establecer los límites del eje Y
 ylim <- c(-2, 2)
 # Mostrar el gráfico
-boxplot(scale(df_Ct), col=rainbow(4), main="Diagrama de caja para cada variable")
+boxplot(scale(df_MULT), col=rainbow(4), main="Diagrama de caja para cada variable")
 
 ###MEDIDAS GLOBALES DE VARIABILIDAD
 # Cálculo del vector de medias 
-vec.med <- (1/9515)*t(df_Ct)%*%rep(1,9515)
+vec.med <- (1/9515)*t(df_MULT)%*%rep(1,9515)
 vec.med
-
 #Matriz de varianzas y covarianzas
-cov_DANE <- cov(df_Ct)
+cov_DANE <- cov(df_MULT)
+saveRDS(cov_DANE, "Outputs/cov_DANE.rds")
 #varianza total
 Dcov_DANE <- diag(cov_DANE)
+saveRDS(Dcov_DANE, "Outputs/Dcov_DANE.rds")
 #varianza promedio
 var_prom <- sum(diag(cov_DANE))/4
+var_prom
 #varianza generalizada
 determinante <- det(cov_DANE)
+determinante
 #desviación típica generalizada
 Des_tipG <- sqrt(det(cov_DANE))
+Des_tipG
 #variabilidad promedio
 Variab_prom <- (det(cov_DANE))^(1/4)
+Variab_prom
 #Desviación Promedio 
 Desv_prom <- (det(cov_DANE))^(1/8)
+Desv_prom
 
 #DISTANCIAS
-dis.DANE <- mahalanobis(df_Ct,vec.med,cov_DANE)
+dis.DANE <- mahalanobis(df_MULT,vec.med,cov_DANE)
 Disp.distan.Dane <- plot(dis.DANE, main = "Distancias de Mahalanobis DANE")
 
 ##ASIMETRÍA Y KURTOSIS
@@ -90,13 +99,11 @@ Asi_Kur<-function(x){
 }
 
 ##ASIMETRÍA Y KURTOSIS
-Asi_Kur(df_Ct)
-
+Asi_Kur(df_MULT)
 
 #DISTRIBUCIÓN NORMAL MULTIVARIANTE
 vec.med
 cov_DANE
-
 
 #PASO 1: Calcular las distancias de mahalanobis y ordenarlas en forma 
 # ascendente
@@ -113,41 +120,41 @@ abline(0,1, col="blue")
 # PRUEBA DE MULTINORMALIDAD 
 # Primero revisión caso univariado 
 # Algunos gráficos: cuantil-cuantil e histogramas 
-mvn(df_Ct, univariatePlot = "qqplot")
+mvn(df_MULT, univariatePlot = "qqplot")
 
 # HACIENDO LA PRUEBA PARA JUZGAR NORMALIDAD:
 
-mvn(df_Ct,univariateTest = "Lillie")
+mvn(df_MULT,univariateTest = "Lillie")
 
 # prueba de multinormalidad 
-mvn(df_Ct, mvnTest = c("mardia"))
+mvn(df_MULT, mvnTest = c("mardia"))
 
 # GRÁFICO CHI CUADRADO - Chi square plot
 par(mfrow=c(2,2)) 
-mvn(df_Ct, multivariatePlot = "qq")
+mvn(df_MULT, multivariatePlot = "qq")
 
 #ATÍPICOS
-chi0.95<-qchisq(0.95,4) 
-chi0.95
+chi0.95<-qchisq(0.95,4)
 par(mfrow=c(1,1))
-plot(dis.DANE, ylabel = "Distancia de Mahalanobis", xlabel ="Indice")
+plot(dis.DANE, ylab = "Distancia de Mahalanobis", xlab = "Indice")
 abline(chi0.95,0, col="red")
 
-faces(df_Ct)
+
+df_Ct <- fread("Data/IEFIC_2017.csv") %>% 
+  select(INGTOTOB,P2478_1,P2478_2,P2478_8,DEPARTAMENTO) %>%
+  mutate(DEPARTAMENTO = as.character(DEPARTAMENTO)) %>%
+  filter(INGTOTOB != "0", INGTOTOB != "97",P2478_1 !="0",P2478_1 !="99", 
+         P2478_1 !="98",P2478_2 !="98", P2478_2 !="0", P2478_2 !="99",P2478_8 !="99", P2478_8 !="98",P2478_8!="0",
+         !is.na(INGTOTOB),!is.na(P2478_1),!is.na(P2478_2),!is.na(P2478_8))
+
+colnames(df_Ct) <- c("INGRESO", "G_ALIMENTACIÓN", "G_VESTUARIO", "G_RECREACIÓN", "DEPARTAMENTO")
+str(df_Ct)
 
 
-
-
-
-
-
-
-
-
-valores <- eigen(s)
-
+valores <- eigen(cov_DANE)
+df_Ct1 <- df_Ct %>%  select(-DEPARTAMENTO)
 #matriz de correlación
-mcor <- cor(df_Ct)
+mcor <- cor(df_Ct1)
 mcor1 <- data.frame(mcor)
 
 # #plotear la correlación
@@ -162,27 +169,14 @@ p <- ggplotly(ggpairs(df_Ct, aes(color = DEPARTAMENTO)) +
 saveRDS(p, "Outputs/corCuanti.rds")
 p
 
-
-
 pheatmap(mcor1,
          display_numbers = TRUE,
          number_color = "black", 
          fontsize_number = 8)
 
-p1 <-ggplotly(chart.Correlation(Mdf_Ct, histogram = TRUE, method = "pearson"))
+p1 <-ggplotly(chart.Correlation(df_Ct1, histogram = TRUE, method = "pearson"))
 
 p1
-
-
-
-
-
-
-
-
-
-
-
 
 #vector de medias
 vec.men <- Mdf_Ct%>% 
@@ -228,7 +222,86 @@ chi095 <- qchisq(0.95,3)
 chi095
 
 
+####################################################
+#Multivariado Cualitativo
+#DICCIONARIOS
+Departamentos <- read_excel("Data/Diccionario IEFIC.xlsx", sheet = "Hoja2") %>%
+  data.frame()
+Sexos <- read_excel("Data/Diccionario IEFIC.xlsx", sheet = "Hoja4") %>% 
+  mutate_all(as.character) %>% 
+  data.frame()
+Percepciónes <- read_excel("Data/Diccionario IEFIC.xlsx", sheet = "Hoja3") %>% 
+  mutate_all(as.character) %>% 
+  data.frame()
+Vivienda <- read_excel("Data/Diccionario IEFIC.xlsx", sheet = "Hoja5") %>% 
+  mutate_all(as.character) %>% 
+  data.frame()
+
+#cargar los datos Cuanlitativos
+df_Cl <- fread("Data/IEFIC_2017.csv") %>%
+  select(P35,P3045,P2439,DEPARTAMENTO) %>%
+  filter(P35 <= 2) %>%
+  filter(DEPARTAMENTO <= 99,!is.na(P35),!is.na(P3045),!is.na(P2439),!is.na(DEPARTAMENTO),P3045 >= 1, P3045 <= 6) %>% 
+  mutate(P35 = factor(P35, levels = Sexos$P35, labels = Sexos$SEXO)) %>% 
+  mutate(DEPARTAMENTO = factor(DEPARTAMENTO, levels = Departamentos$DEPARTAMENTO, labels = Departamentos$Nombre.del.departamento)) %>% 
+  mutate(P3045 = factor(P3045, levels = Percepciónes$P3045, labels = Percepciónes$PERCEPCIÓN.PAGOS.ELECTRÓNICOS)) %>%
+  mutate(P2439 = factor(P2439, levels = Vivienda$P2439, labels = Vivienda$Vivienda.Propia))
+str(df_Cl)
+saveRDS(df_Cl, "Outputs/df_MCl.rds")
+#DICCIONARIOS
+colnames(df_Cl) <- c("SEXO", "PERCEPCIÓN PAGOS ELECT.", "VIVIENDA PROPIA", "DEPARTAMENTO")
+
+#Tabla Sexo vs Percepción de pagos electrónicos
+tabla.S.Per <- table(df_Cl$SEXO,df_Cl$`PERCEPCIÓN PAGOS ELECT.`)
+tabla.S.Per <- round(addmargins(prop.table(tabla.S.Per)*100),2)
+tabla.S.Per
+saveRDS(tabla.S.Per, "Outputs/tabla.S.Per.rds")
+
+#Tabla Sexo vs Vivienda Propia
+tabla.S.Viv <- table(df_Cl$SEXO,df_Cl$`VIVIENDA PROPIA`)
+tabla.S.Viv <- round(addmargins(prop.table(tabla.S.Viv)*100),2)
+tabla.S.Viv
+saveRDS(tabla.S.Viv, "Outputs/tabla.S.Viv.rds")
 
 
+#Graficos tablas de contingencia
+colores <- c("#80FFFF", "#FFFFFF")
+barplot(tabla.S.Per, col = colores, cex.names = 0.8)
+# Añadimos una leyenda
+legend("topright", legend = c("Hombre", "Mujer"), fill = colores)
+
+
+colores <- c("#800FFF", "#AAAFFF")
+barplot(tabla.S.Viv, col = colores, cex.names = 0.8)
+# Añadimos una leyenda
+legend("topleft", legend = c("Hombre", "Mujer"), fill = colores)
+
+
+
+###MULTIVARIADO MIXTO
+Violín1 <- bwplot(df_MULT$INGTOTOB ~ df_Cl$P35, 
+                  ylim=c(-100000, 6000000), 
+                  scales=list(cex=1.2, font=2), 
+                  ylab = list("Ingreso", cex=2), 
+                  panel = function(..., box.ratio) {
+                    panel.violin(..., col = "transparent", 
+                                 varwidth = FALSE, box.ratio = box.ratio)
+                    panel.bwplot(..., fill = NULL, box.ratio = 0.1)
+                  } 
+)
+
+# Aplicar rotación al eje x
+Violín1 <- update(Violín1, scales=list(x=list(rot=30)))
+
+
+
+Violín2 <- bwplot(df_MULT$INGTOTOB ~ df_Cl$P3045, ylim=c(-100000, 6000000), scales=list(cex=1.2, font=2), ylab = list
+                  ("Ingreso", cex=2), panel = function(..., box.ratio)
+                  {
+                    panel.violin(..., col = "transparent",
+                                 varwidth = FALSE, box.ratio = box.ratio)
+                    panel.bwplot(..., fill = NULL, box.ratio = 0.1)
+                  } )
+Violín2 <- update(Violín2, scales=list(x=list(rot=30)))
 
 
