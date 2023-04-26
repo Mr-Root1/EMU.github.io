@@ -20,7 +20,8 @@ ipak(packages)
 options(scipen = 999)
 
 
-#cargar los datos Cuantitativos
+# cargar los datos Cuantitativos para el análisis exploratorio de los datos
+
 df_Ct <- fread("Data/IEFIC_2017.csv") %>% 
   select(INGTOTOB,P2478_1,P2478_2,P2478_8,DEPARTAMENTO) %>%
   # mutate(DEPARTAMENTO = as.character(DEPARTAMENTO)) %>%

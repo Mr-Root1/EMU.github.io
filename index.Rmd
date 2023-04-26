@@ -240,7 +240,7 @@ Texto Texto
 
 
 <div class="tab">
-  <button class="tablink first-tab" data-id="introduccion1">INTRODUCCIÓN</button>
+  <button class="tablink first-tab"data-id="introduccion1">INTRODUCCIÓN</button>
   <button class="tablink" data-id="seccion12">SEXO</button>
   <button class="tablink" data-id="seccion22">PAGOS ELECTRÓNICOS</button>
   <button class="tablink" data-id="seccion32">VIVIENDA PROPIA</button>
@@ -249,38 +249,101 @@ Texto Texto
 
 <div id="introduccion1" class="tabcontent">
 #### INGRESO TOTAL POR PERSONA
-Encuesta de Carga Financiera y Educación Financiera de los Hogares - IEFIC-2017 -2018
-```{r include=FALSE}
-tf_ingreso <- readRDS("Outputs/tf_ingreso.rds")
-str(tf_ingreso)
+Encuesta de Carga Financiera y Educación Financiera de los Hogares - IEFIC-2017
+
+```{r fig.height=15, fig.width=15, include=FALSE}
+library(knitr)
+TDF <- readRDS("Outputs/df_Cl.rds")
+kable(TDF, row.names = TRUE)
+
 ```
 
-```{r fig.height=15, fig.width=15}
-library(DT)
-library(data.table)
-DT::datatable(tf_ingreso, options = list(pageLength = 15))
-```
-
-```{r echo=FALSE, out.width='70%', fig.cap="Fig. 1. Histograma Ingreso del Hogar", fig.align='center'}
-knitr::include_graphics("Outputs/Hist_ingreso.jpeg")
-```
-
-```{r echo=FALSE, out.width='65%', fig.cap="Fig. 2. Box Plot Ingresos del Hogar", fig.align='center'}
-knitr::include_graphics("Outputs/BOX_ingreso.jpeg")
-```
 
 ```{r}
-NUM_5_INGRESO1 <- readRDS("Outputs/NUM_5_INGRESO1.rds")
 library(DT)
 library(data.table)
-DT::datatable(NUM_5_INGRESO1)
+DT::datatable(TDF, options = list(pageLength = 5))
 ```
 
+</div>
+
+
+
+<div id="seccion12" class="tabcontent">
+#### INGRESO TOTAL POR PERSONA
+Encuesta de Carga Financiera y Educación Financiera de los Hogares - IEFIC-2017
+
+```{r fig.height=15, fig.width=15, include=FALSE}
+library(knitr)
+TDFS <- readRDS("Outputs/TDF_SEXO.rds")
+kable(TDFS, row.names = TRUE)
+
+```
+
+
 ```{r}
-NUM_5_INGRESO2 <- readRDS("Outputs/NUM_5_INGRESO2.rds")
 library(DT)
 library(data.table)
-DT::datatable(NUM_5_INGRESO2)
+DT::datatable(TDFS, options = list(pageLength = 15))
+```
+
+```{r echo=FALSE, out.width='60%', fig.cap="Fig. 7. Histograma Gastos en Recreación", fig.align='center'}
+knitr::include_graphics("Outputs/T_Sexo.jpeg")
+```
+
+</div>
+
+
+<div id="seccion22" class="tabcontent">
+#### INGRESO TOTAL POR PERSONA
+Encuesta de Carga Financiera y Educación Financiera de los Hogares - IEFIC-2017
+
+```{r fig.height=15, fig.width=15, include=FALSE}
+library(knitr)
+TDFP<- readRDS("Outputs/TDF_Percep.rds")
+kable(TDFP, row.names = TRUE)
+
+```
+
+
+```{r}
+library(DT)
+library(data.table)
+DT::datatable(TDFP, options = list(pageLength = 15))
+```
+
+
+```{r echo=FALSE, out.width='60%', fig.cap="Fig. 7. Histograma Gastos en Recreación", fig.align='center'}
+knitr::include_graphics("Outputs/Histo_Percep.jpeg")
+```
+
+```{r echo=FALSE, out.width='60%', fig.cap="Fig. 7. Histograma Gastos en Recreación", fig.align='center'}
+knitr::include_graphics("Outputs/T_Percep.jpeg")
+```
+
+</div>
+
+
+<div id="seccion32" class="tabcontent">
+#### INGRESO TOTAL POR PERSONA
+Encuesta de Carga Financiera y Educación Financiera de los Hogares - IEFIC-2017
+
+```{r fig.height=15, fig.width=15, include=FALSE}
+library(knitr)
+TDFV <- readRDS("Outputs/TDF_VIVIENDA.rds")
+kable(TDFV, row.names = TRUE)
+
+```
+
+
+```{r}
+library(DT)
+library(data.table)
+DT::datatable(TDFV, options = list(pageLength = 15))
+```
+
+```{r echo=FALSE, out.width='60%', fig.cap="Fig. 7. Histograma Gastos en Recreación", fig.align='center'}
+knitr::include_graphics("Outputs/T_Viv.jpeg")
 ```
 
 </div>
