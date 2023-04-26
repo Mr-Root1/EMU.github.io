@@ -188,13 +188,15 @@ df_MCl
 ```{r echo=FALSE}
 #Resumen estadístico
 tabla.S.Per <- readRDS("Outputs/tabla.S.Per.rds")
-tabla.S.Per
+library(knitr)
+kable(tabla.S.Per)
 ```
 
 ```{r echo=FALSE}
 #Resumen estadístico
 tabla.S.Viv <- readRDS("Outputs/tabla.S.Viv.rds")
-tabla.S.Viv
+library(knitr)
+kable(tabla.S.Viv)
 ```
 
 ```{r echo=FALSE, out.width='70%', fig.cap="Fig. 5. Correlación", fig.align='center'}
@@ -206,3 +208,11 @@ knitr::include_graphics("Outputs/Sexo_Viv.jpeg")
 ```
 </div>
 
+
+
+<div id="seccion3" class="tabcontent">
+#### SET DE DATOS
+Encuesta de Carga Financiera y Educación Financiera de los Hogares - IEFIC-2017
+
+
+</div>
