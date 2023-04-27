@@ -50,7 +50,7 @@ Texto Texto
 
 
 <div id="introduccion" class="tabcontent">
-#### SET DE DATOS
+#### VARIABLES
 Encuesta de Carga Financiera y Educación Financiera de los Hogares - IEFIC-2017 -2018
 
 ```{r echo=FALSE}
@@ -77,7 +77,7 @@ DT::datatable(df_MULT, options = list(pageLength = 15))
 
 
 <div id="seccion1" class="tabcontent">
-#### SET DE DATOS
+#### 
 Encuesta de Carga Financiera y Educación Financiera de los Hogares - IEFIC-2017 -2018
 
 ```{r echo=FALSE}
@@ -226,18 +226,30 @@ knitr::include_graphics("Outputs/Violín2.jpeg")
 
 
 <div id="seccion4" class="tabcontent">
-#### SET DE DATOS
+#### ANÁLIS DE COMPONENTES PRINCIPALES 
 Encuesta de Carga Financiera y Educación Financiera de los Hogares - IEFIC-2017
 
+Para el desarrollo del método de análisis de componenetes principales, se han tomado las variables, *Ingreso total del Hogar,* *Gastos de Alimentación,* *Gastos de Vestuario* y *Gastos en Recreación.* 
 ```{r echo=FALSE, out.width='70%', fig.cap="Fig. 9. Biplot Análisis de Componentes Principales", fig.align='center'}
 knitr::include_graphics("Outputs/Biplot.jpeg")
 ```
+Se puede observar que el vector correspondiente a la variable Ingreso por Hogar tiene la dirección más positiva y la longitud más amplia. Además, se pueden apreciar algunos valores extremos en la distribución de ingresos de los encuestados, lo cual indica una alta variabilidad en esta variable. Estos valores extremos no se eliminaron o trataron como atípicos, ya que son una característica natural de la variable.
+
+Las variables Gasto en Alimentación y Gasto en Vestuario tienen un comportamiento similar en cuanto a su dirección y magnitud, con pocos valores extremos que indican una baja variabilidad en estos gastos. También se observa la variable Gasto en Recreación, que tiene la menor variabilidad de las cuatro variables, lo que sugiere que los encuestados gastan cantidades más homogéneas en recreación.
+
+
 
 ```{r echo=FALSE, out.width='70%', fig.cap="Fig. 10. Aporte por componente", fig.align='center'}
 knitr::include_graphics("Outputs/Apor_Comp.jpeg")
 ```
+El método utilizado permite observar la proporción de varianza explicada por cada una de las componentes. En este caso, se encontró que la primera componente explica el 47% de la varianza y la segunda componente el 20%, lo que indica que seleccionar dos componentes principales permitiría conservar el 67% de la varianza de las cuatro variables.
+
+
 
 ```{r echo=FALSE, out.width='70%', fig.cap="Fig. 11. Número de Componentes", fig.align='center'}
 knitr::include_graphics("Outputs/N_componentes.jpeg")
 ```
+De esta manera, también es posible observar el aporte de cada componente cuando se utilizan 1, 2, 3 o 4 componentes. En este caso, se encontró que seleccionar tres componentes sería lo ideal para responder al 85% de la variabilidad de las cuatro variables observadas.
+
+
 </div>
