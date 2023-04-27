@@ -13,9 +13,9 @@ ipak <- function(pkg){
   sapply(pkg, require, character.only = TRUE)
 }
 
-packages <- c("data.table", "readxl", "dplyr","readr","esquisse", "scales", "ggplot2", "RColorBrewer", "devtools", "corrplot", "GGally", "pheatmap", "PerformanceAnalytics", "plotly", "MVN", "vcd", "lattice")
+packages <- c("partykit", "data.table", "readxl", "dplyr","readr","esquisse", "scales", "ggplot2", "RColorBrewer", "devtools", "corrplot", "GGally", "pheatmap", "PerformanceAnalytics", "plotly", "MVN", "vcd", "lattice")
 ipak(packages)
-
+library(mvpart)
 options(scipen = 999)
 
 #cargar los datos Cuantitativos
@@ -303,5 +303,105 @@ Violín2 <- bwplot(df_MULT$INGTOTOB ~ df_Cl$P3045, ylim=c(-100000, 6000000), sca
                     panel.bwplot(..., fill = NULL, box.ratio = 0.1)
                   } )
 Violín2 <- update(Violín2, scales=list(x=list(rot=30)))
+
+
+##Análisis COMPONENTES PRINCIPALES
+str(df_MULT)
+colnames(df_MULT) <- c("INGRESO", "G_ALIMENTACIÓN", "G_VESTUARIO", "G_RECREACIÓN")
+#Centrar los datos
+datos_centrados <- df_MULT
+datos_centrados$INGTOTOB <- df_MULT$INGTOTOB - mean(df_MULT$INGTOTOB)
+datos_centrados$P2478_1 <- df_MULT$P2478_1 - mean(df_MULT$P2478_1)
+datos_centrados$P2478_2 <- df_MULT$P2478_2 - mean(df_MULT$P2478_2)
+datos_centrados$P2478_8 <- df_MULT$P2478_8 - mean(df_MULT$P2478_8)
+datos_centrados
+
+
+#cálculo de matriz de correlación
+matriz_cov <- cov(datos_centrados)
+matriz_cov
+
+eigen <- eigen(matriz_cov)
+# Valores propios
+eigen$values
+# Vectore propios
+eigen$vectors
+
+t_eigenvectors <- t(eigen$vectors)
+t_datos_centrados <- t(datos_centrados)
+
+# Producto matricial
+pc_scores <- t_eigenvectors %*% t_datos_centrados
+rownames(pc_scores) <- c("PC1", "PC2", "PC3", "PC4")
+
+# Se vuelve a transponer para que los datos estén en modo tabla
+t(pc_scores)
+
+datos_recuperados <- t(eigen$vectors %*% pc_scores)
+datos_recuperados[, 1] <- datos_recuperados[, 1] + mean(df_MULT$INGTOTOB)
+datos_recuperados[, 2] <- datos_recuperados[, 2] + mean(df_MULT$P2478_1)
+datos_recuperados[, 3] <- datos_recuperados[, 3] + mean(df_MULT$P2478_2)
+datos_recuperados[, 4] <- datos_recuperados[, 4] + mean(df_MULT$P2478_8)
+datos_recuperados
+
+pca <- prcomp(df_MULT, scale = TRUE)
+names(pca)
+
+# Promedios
+pca$center
+
+# Varianzas
+pca$scale
+
+pca$rotation
+
+dim(pca$x)
+
+biplot(x = pca, scale = 0, cex = 0.6, col = c("blue4", "brown3"))
+
+pca$rotation <- -pca$rotation
+pca$x        <- -pca$x
+biplot(x = pca, scale = 0, cex = 0.6, col = c("blue4", "brown3"))
+
+#Varianza acumulada
+prop_varianza <- pca$sdev^2 / sum(pca$sdev^2)
+prop_varianza
+
+ggplot(data = data.frame(prop_varianza, pc = 1:4),
+       aes(x = pc, y = prop_varianza)) +
+  geom_col(width = 0.3) +
+  scale_y_continuous(limits = c(0,1)) +
+  theme_bw() +
+  labs(x = "Componente principal",
+       y = "Prop. de varianza explicada")
+
+prop_varianza_acum <- cumsum(prop_varianza)
+prop_varianza_acum
+
+ggplot(data = data.frame(prop_varianza_acum, pc = 1:4),
+       aes(x = pc, y = prop_varianza_acum, group = 1)) +
+  geom_point() +
+  geom_line() +
+  theme_bw() +
+  labs(x = "Componente principal",
+       y = "Prop. varianza explicada acumulada")
+
+
+##Análisis Conglomerados
+
+fit <- ctree(INGTOTOB ~ herbs + reft + moss + sand + twigs + water, data = df_MULT)
+
+# Graficar el árbol
+plot(as.party(fit))
+
+
+
+
+
+
+
+
+
+
 
 

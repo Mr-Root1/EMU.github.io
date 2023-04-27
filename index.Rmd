@@ -1,6 +1,6 @@
 ---
-title: "INFORME FINAL ESTADÍSTICA UNIVARIADA"
-subtitle: "Análisis exploratorio encuenta IEFIC-2017 -2018"
+title: "INFORME FINAL ESTADÍSTICA MULTIVARIADA"
+subtitle: "Análisis exploratorio encuesta IEFIC-2017"
 author: "Diego Sanabria"
 output: 
   html_document: 
@@ -36,7 +36,7 @@ $(document).ready(function() {
 
 
 ### _A.E. UNIVARIADO VAR. CUANTITATIVAS_
-Texto Texto
+Se realizará un análisis de variables cuantitativas de manera univariada.
 
 
 <div class="tab">
@@ -236,7 +236,7 @@ DT::datatable(NUM_5_RECR2)
 
 
 ### _A.E. UNIVARIADO VAR. CUALITATIVAS_
-Texto Texto
+Se realizará un análisis de variables cualitativas de manera univariada.
 
 
 <div class="tab">
