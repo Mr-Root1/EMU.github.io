@@ -238,6 +238,6 @@ knitr::include_graphics("Outputs/Apor_Comp.jpeg")
 ```
 
 ```{r echo=FALSE, out.width='70%', fig.cap="Fig. 11. Número de Componentes", fig.align='center'}
-knitr::include_graphics("Outputs/Apor_Comp.jpeg")
+knitr::include_graphics("Outputs/N_componentes.jpeg")
 ```
 </div>

@@ -248,7 +248,6 @@ Texto Texto
 
 
 <div id="introduccion1" class="tabcontent">
-#### INGRESO TOTAL POR PERSONA
 Encuesta de Carga Financiera y Educación Financiera de los Hogares - IEFIC-2017
 
 ```{r fig.height=15, fig.width=15, include=FALSE}
@@ -270,7 +269,7 @@ DT::datatable(TDF, options = list(pageLength = 5))
 
 
 <div id="seccion12" class="tabcontent">
-#### INGRESO TOTAL POR PERSONA
+#### SEXO
 Encuesta de Carga Financiera y Educación Financiera de los Hogares - IEFIC-2017
 
 ```{r fig.height=15, fig.width=15, include=FALSE}
@@ -295,7 +294,7 @@ knitr::include_graphics("Outputs/T_Sexo.jpeg")
 
 
 <div id="seccion22" class="tabcontent">
-#### INGRESO TOTAL POR PERSONA
+#### PERCEPCIÓN A LOS PAGOS ELECTRÓNICOS
 Encuesta de Carga Financiera y Educación Financiera de los Hogares - IEFIC-2017
 
 ```{r fig.height=15, fig.width=15, include=FALSE}
@@ -325,7 +324,7 @@ knitr::include_graphics("Outputs/T_Percep.jpeg")
 
 
 <div id="seccion32" class="tabcontent">
-#### INGRESO TOTAL POR PERSONA
+#### TENENCIA DE VIVIENDA
 Encuesta de Carga Financiera y Educación Financiera de los Hogares - IEFIC-2017
 
 ```{r fig.height=15, fig.width=15, include=FALSE}
